@@ -4,30 +4,30 @@ Python script for grading a bunch of assignments submitted on classesv2 system a
 
 ### How to use
 
-#### Login to classesv2 website and nevigate to an assignment you want to grade.
+1. Login to classesv2 website and nevigate to an assignment you want to grade.
 
 
-#### Download zip files of corresponding submissions
+2. Download zip files of corresponding submissions
 
-![Step 1](http://i.imgur.com/M4Vh5ZC.png)
+![1]
 
-#### Select corrent types
+3. Select corrent types
 
-![Step 2](http://i.imgur.com/bm6F6mx.png)
+![2]
 
-#### Unzip archive 
+4. Unzip archive 
 
-![Step 3](http://i.imgur.com/ENqF37e.png)
+![3]
 
-#### Configure main.py and write grade function
+5. Configure main.py and write grade function
 
-#### Run the script
+6. Run the script
 
-#### Drink coffee
+7. Drink coffee
 
-#### Check, zip and upload graded files
+8. Check, zip and upload graded files
+![4]
 
-![Step 4](http://i.imgur.com/xAN1vm8.png)
 
 
 ### Develop environment
@@ -45,4 +45,10 @@ Currently the tool encapsulates submission and assignment. It also needs to enca
 In Classesv2.py, we need to implement login/logout, download/upload archieve file functions.
 
 
-### Open to Pull Requests
+### Welcome for Pull Requests
+
+
+[1](http://i.imgur.com/M4Vh5ZC.png)
+[2](http://i.imgur.com/bm6F6mx.png)
+[3](http://i.imgur.com/ENqF37e.png)
+[4](http://i.imgur.com/xAN1vm8.png)
