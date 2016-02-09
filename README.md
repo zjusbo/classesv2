@@ -48,7 +48,7 @@ In Classesv2.py, we need to implement login/logout, download/upload archieve fil
 ### Welcome for Pull Requests
 
 
-[1](http://i.imgur.com/M4Vh5ZC.png)
-[2](http://i.imgur.com/bm6F6mx.png)
-[3](http://i.imgur.com/ENqF37e.png)
-[4](http://i.imgur.com/xAN1vm8.png)
+[1]: http://i.imgur.com/M4Vh5ZC.png
+[2]: http://i.imgur.com/bm6F6mx.png
+[3]: http://i.imgur.com/ENqF37e.png
+[4]: http://i.imgur.com/xAN1vm8.png
