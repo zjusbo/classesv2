@@ -4,8 +4,9 @@
 # Author: Bo Song
 # Email: bo.song@yale.edu
 # Date: 2/8/2016
-# 
+# NOT FINISHED
 
+# TODO: retrieve assign list, download submissions package
 class Course(object):
 	"""Course class"""
 	def __init__(self, courseCode):
@@ -22,3 +23,9 @@ class Course(object):
 
 	def setCourseName(self, name):
 		self.courseName = name
+
+	def retrieveAssignList(self):
+		pass
+
+	def downloadAssign(self, name):
+		pass

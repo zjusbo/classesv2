@@ -59,7 +59,7 @@ class Submission(object):
         """
         return self.timestamp
 
-    def setGrade(grade):
+    def setGrade(self, grade):
         """Write grade"""
         self.grade = grade
 
