@@ -2,30 +2,30 @@
 
 Python script for grading a bunch of assignments submitted on classesv2 system at Yale University. It makes TAs' life much easier.
 
-### How to use it
+### How to use
 
-1. Login to classesv2 website and nevigate to an assignment you want to grade.
+#### Login to classesv2 website and nevigate to an assignment you want to grade.
 
 
-2. Download zip files of corresponding submissions
+#### Download zip files of corresponding submissions
 
 ![Step 1](http://i.imgur.com/M4Vh5ZC.png)
 
-3. Select type of files
+#### Select corrent types
 
 ![Step 2](http://i.imgur.com/bm6F6mx.png)
 
-4. Unzip archive files 
+#### Unzip archive 
 
 ![Step 3](http://i.imgur.com/ENqF37e.png)
 
-5. Configure main.py and write grade function
+#### Configure main.py and write grade function
 
-6. Run the script
+#### Run the script
 
-7. Drink coffee
+#### Drink coffee
 
-8. Check, zip and upload graded files
+#### Check, zip and upload graded files
 
 ![Step 4](http://i.imgur.com/xAN1vm8.png)
 
