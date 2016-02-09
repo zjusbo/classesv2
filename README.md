@@ -45,7 +45,7 @@ Currently the tool encapsulates submission and assignment. It also needs to enca
 In Classesv2.py, we need to implement login/logout, download/upload archieve file functions.
 
 
-### Open for Pull Request
+### Open to Pull Requests
 
 ### Author
 
