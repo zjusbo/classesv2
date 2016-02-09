@@ -46,7 +46,3 @@ In Classesv2.py, we need to implement login/logout, download/upload archieve fil
 
 
 ### Open to Pull Requests
-
-### Author
-
-Bo Song
