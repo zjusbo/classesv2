@@ -2,7 +2,7 @@
 
 Python script for grading a bunch of assignments submitted on classesv2 system at Yale University. It makes TAs' life much easier.
 
-### How to use
+### How to use it
 
 1. Login to classesv2 website and nevigate to an assignment you want to grade.
 
