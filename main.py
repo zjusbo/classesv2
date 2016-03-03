@@ -9,10 +9,11 @@
 from Assignment import Assignment
 import re
 
+# set the assinment folder name
 foldername = "PS4_ Animation, Methods with Return, Simple Conditionals"
+
 def main():
 
-    # set the assinment folder name
     
     # construct assignment object
     assign = Assignment(foldername)
@@ -47,25 +48,30 @@ def grade_pset4_part1(submission):
     os.chdir(foldername)
     os.chdir(submission.path)
     os.chdir("Submission attachment(s)")
-    # complile
-    stdout, stderr = run("javac Animation.java -classpath ../../")
-    print(stdout)
+    # complile, print to console
+    run_checkout("javac Animation.java -classpath ../../")
     
-    # run it
+    
+    # run program, print to console
     run_checkout("java -classpath \"" + submission.path + ":" + submission.path + "../../" + "\" Animation", ["800 600 ","0 0 10 45 ","../../1.png ","800 300 30 -180 ","../../1.wav ","3"])
 
-    print("Name: " + submission.path)
     while True:
         try:
+            print("Name: " + submission.path)
             grade = raw_input("Grade: ")
-            grade = float(grade)
-            if abs(grade - (-1)) < 0.1:
-                # re-run current case, if grade is -1
+            # re-run current case, if grade is -1
+            if grade == "rerun":
                 os.chdir(oldPath)
                 return grade_pset4(submission)
+            # re-run without user input
+            if grade == "noinput":
+                run("java -classpath \"" + submission.path + ":" + submission.path + "../../" + "\" Animation")
+                continue
+            grade = float(grade)
             comment = raw_input("Comments: ")
         except Exception, e:
-            print("Please enter a float grade")
+            print("Please enter a float for grade")
+            print("or enter 'rerun' or 'noinput' ")
         else:
             break
     os.chdir(oldPath)
@@ -88,9 +94,9 @@ def grade_pset4_part2(submission):
     # run it
     run_checkout("java Cashier", "1.28 1 6.0 5.00")
 
-    print("Name: " + submission.path)
     while True:
         try:
+            print("Name: " + submission.path)
             grade = raw_input("Grade: ")
             grade = float(grade)
             if abs(grade - (-1)) < 0.1:
@@ -105,19 +111,27 @@ def grade_pset4_part2(submission):
     os.chdir(oldPath)
     return grade, comment
 
-def run_checkout(command, user_input = ""):
+def run_checkout(command, user_input = None):
     stdout, stderr = run(command, user_input)
     if stdout != None:
         print(stdout)
     if stderr != None:
         print(stderr)
 
-def run(command, user_input = ""):
+def run(command, user_input = None):
     from subprocess import Popen, PIPE
     import os
     print(os.getcwd())
-    p = Popen(command, stdin= PIPE, stdout = PIPE) #NOTE: no shell=True here
-    user_input = "".join(user_input) # convert list to string
+    if user_input == None:
+        # no user_input, read from stdin
+        p = Popen(command, stdin = None, stdout = None) #NOTE: no shell=True here
+    else:
+        # read user_input from PIPE
+        p = Popen(command, stdin= PIPE, stdout = PIPE) #NOTE: no shell=True here
+    
+    if isinstance(user_input, list):
+        user_input = "".join(user_input) # convert list to string
+    
     print(command)
     print(user_input)
     stdout, stderr = p.communicate(user_input) 
