@@ -36,9 +36,44 @@ def grade(submission):
        value is attachment absolute path
        grading function should return a tuple containing 2 elements, grade(float) and feedback comment(string)
     """
-    return grade_pset4(submission)
+    return grade_pset4_part1(submission)
 
-def grade_pset4(submission):
+
+def grade_pset4_part1(submission):
+    import os
+    oldPath = os.getcwd()
+    # change working directory
+
+    os.chdir(foldername)
+    os.chdir(submission.path)
+    os.chdir("Submission attachment(s)")
+    # complile
+    stdout, stderr = run("javac Animation.java -classpath ../../")
+    print(stdout)
+    
+    # run it
+    run_checkout("java -classpath \"" + submission.path + ":" + submission.path + "../../" + "\" Animation", ["800 600 ","0 0 10 45 ","../../1.png ","800 300 30 -180 ","../../1.wav ","3"])
+
+    print("Name: " + submission.path)
+    while True:
+        try:
+            grade = raw_input("Grade: ")
+            grade = float(grade)
+            if abs(grade - (-1)) < 0.1:
+                # re-run current case, if grade is -1
+                os.chdir(oldPath)
+                return grade_pset4(submission)
+            comment = raw_input("Comments: ")
+        except Exception, e:
+            print("Please enter a float grade")
+        else:
+            break
+    os.chdir(oldPath)
+    return grade, comment
+
+
+
+def grade_pset4_part2(submission):
     import os
     oldPath = os.getcwd()
     # change working directory
@@ -52,20 +87,23 @@ def grade_pset4(submission):
     
     # run it
     run_checkout("java Cashier", "1.28 1 6.0 5.00")
-    run_checkout("java Cashier", "1 1 0.00 1.00")
-    run_checkout("java Cashier", "1.28 1 6.0 1.00")
 
     print("Name: " + submission.path)
-    grade = raw_input("Grade: ")
-    comment = raw_input("Comments: ")
-    dummyScore = float(grade)
-    if abs(grade - (-1)) < 0.1:
-        # re-run current case, if grade is -1
-        os.chdir(oldPath)
-        return grade_pset4(submission)
-    dummyComment = comment
+    while True:
+        try:
+            grade = raw_input("Grade: ")
+            grade = float(grade)
+            if abs(grade - (-1)) < 0.1:
+                # re-run current case, if grade is -1
+                os.chdir(oldPath)
+                return grade_pset4(submission)
+            comment = raw_input("Comments: ")
+        except Exception, e:
+            print("Please enter a float grade")
+        else:
+            break
     os.chdir(oldPath)
-    return dummyScore, dummyComment
+    return grade, comment
 
 def run_checkout(command, user_input = ""):
     stdout, stderr = run(command, user_input)
@@ -76,9 +114,13 @@ def run_checkout(command, user_input = ""):
 
 def run(command, user_input = ""):
     from subprocess import Popen, PIPE
+    import os
+    print(os.getcwd())
     p = Popen(command, stdin= PIPE, stdout = PIPE) #NOTE: no shell=True here
-    print(command + " " + user_input)
-    stdout, stderr = p.communicate(user_input)
+    user_input = "".join(user_input) # convert list to string
+    print(command)
+    print(user_input)
+    stdout, stderr = p.communicate(user_input) 
     p.wait() # wait until it finish
     return stdout, stderr
     

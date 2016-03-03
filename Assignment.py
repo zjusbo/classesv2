@@ -119,11 +119,12 @@ class Assignment(object):
 			for row in output:
 				writer.writerow(row)
 
-		# commit to corresponding comment.txt
+		# commit to corresponding comment.txt, append mode
 		prevPath = os.getcwd()
 		for netid, submission in self.submissions.iteritems():
 			os.chdir(submission.path)
-			with open(commentFilename, 'wb') as txtFile:
+			with open(commentFilename, 'a') as txtFile:
+				txtFile.write("\n")
 				txtFile.write(submission.comment)
 			os.chdir(prevPath)
 
