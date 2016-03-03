@@ -59,6 +59,9 @@ def grade_pset4(submission):
     grade = raw_input("Grade: ")
     comment = raw_input("Comments: ")
     dummyScore = float(grade)
+    if grade == -1:
+        # re-run current case
+        return grade_pset4(submission)
     dummyComment = comment
     os.chdir(oldPath)
     return dummyScore, dummyComment
