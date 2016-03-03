@@ -9,15 +9,15 @@ Python script for grading a bunch of assignments submitted on classesv2 system a
 
 2. Download zip file of corresponding submissions
 
-![Step 1](http://i.imgur.com/M4Vh5ZC.png)
+![1]
 
-3. Select type of files
+3. Select corrent types
 
-![Step 2](http://i.imgur.com/bm6F6mx.png)
+![2]
 
-4. Unzip archive files 
+4. Unzip archive 
 
-![Step 3](http://i.imgur.com/ENqF37e.png)
+![3]
 
 5. Configure main.py and write grade function
 
@@ -26,8 +26,8 @@ Python script for grading a bunch of assignments submitted on classesv2 system a
 7. Drink coffee
 
 8. Check, zip and upload graded files
+![4]
 
-![Step 4](http://i.imgur.com/xAN1vm8.png)
 
 
 ### Develop environment
@@ -45,4 +45,10 @@ Currently the tool encapsulates submission and assignment. It also needs to enca
 In Classesv2.py, we need to implement login/logout, download/upload archieve file functions.
 
 
-### Open to Pull Requests
+### Welcome for Pull Requests
+
+
+[1]: http://i.imgur.com/M4Vh5ZC.png
+[2]: http://i.imgur.com/bm6F6mx.png
+[3]: http://i.imgur.com/ENqF37e.png
+[4]: http://i.imgur.com/xAN1vm8.png
