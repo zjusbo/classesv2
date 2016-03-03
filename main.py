@@ -42,18 +42,22 @@ def grade(submission):
 
 def grade_pset4_part1(submission):
     import os
+    from shutil import copyfile
     oldPath = os.getcwd()
     # change working directory
-
     os.chdir(foldername)
     os.chdir(submission.path)
     os.chdir("Submission attachment(s)")
-    # complile, print to console
-    run_checkout("javac Animation.java -classpath ../../")
     
+    #copy dependencies
+    copyfile(oldPath + "/" + foldername + "/1.png", os.getcwd() + "/1.png")
+    copyfile(oldPath + "/" + foldername + "/1.wav", os.getcwd() + "/1.wav")
+
+    # complile, print to console
+    run_checkout("javac Animation.java")
     
     # run program, print to console
-    run_checkout("java -classpath \"" + submission.path + ":" + submission.path + "../../" + "\" Animation", ["800 600 ","0 0 10 45 ","../../1.png ","800 300 30 -180 ","../../1.wav ","3"])
+    run_checkout("java Animation", ["800 600 ","0 0 10 45 ","../../1.png ","800 300 30 -180 ","../../1.wav ","3"])
 
     while True:
         try:
@@ -62,10 +66,10 @@ def grade_pset4_part1(submission):
             # re-run current case, if grade is -1
             if grade == "rerun":
                 os.chdir(oldPath)
-                return grade_pset4(submission)
+                return grade_pset4_part1(submission)
             # re-run without user input
-            if grade == "noinput":
-                run("java -classpath \"" + submission.path + ":" + submission.path + "../../" + "\" Animation")
+            elif grade == "noinput":
+                run("java Animation")
                 continue
             grade = float(grade)
             comment = raw_input("Comments: ")
@@ -76,8 +80,6 @@ def grade_pset4_part1(submission):
             break
     os.chdir(oldPath)
     return grade, comment
-
-
 
 def grade_pset4_part2(submission):
     import os
