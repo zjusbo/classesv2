@@ -14,6 +14,8 @@ class Assignment(object):
 	   dict of Submission objects - submissions - students' submissions:
 	   		key - netid
 	   		value - submission object
+	   ddlTimestamp - int - deadline timestamp
+	   latePenaltyRate - float - penalty rate for late submission. 0.0(no score)~1.0(no penalty)
 	"""
 	def __init__(self, name):
 		super(Assignment, self).__init__()
@@ -23,6 +25,7 @@ class Assignment(object):
 
 		# change working directory
 		oldPath = os.getcwd()
+
 		os.chdir(name)
 
 		# get student submissions
@@ -64,7 +67,7 @@ class Assignment(object):
 		   currently we only grade for attachments in submission
 		"""
 		for submission in self.submissions.itervalues():
-			score, comment = self.gradeFunc(submission.attachments)
+			score, comment = self.gradeFunc(submission)
 			
 			# late submission penalty
 			if self.ddlTimestamp != 0 and submission.getTimestamp() > self.ddlTimestamp:
@@ -73,6 +76,8 @@ class Assignment(object):
 				submission.setGrade(score)
 			if comment:
 				submission.setComment(comment)
+			# commit after each grade
+			self.commit()
 
 	def commit(self):
 		"""commit grade result to grades.csv

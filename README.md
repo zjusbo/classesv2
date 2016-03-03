@@ -7,7 +7,7 @@ Python script for grading a bunch of assignments submitted on classesv2 system a
 1. Login to classesv2 website and nevigate to an assignment you want to grade.
 
 
-2. Download zip files of corresponding submissions
+2. Download zip file of corresponding submissions
 
 ![Step 1](http://i.imgur.com/M4Vh5ZC.png)
 
