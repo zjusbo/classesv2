@@ -51,14 +51,18 @@ def grade_pset4_part1(submission):
     
     #copy dependencies
     copyfile(oldPath + "/" + foldername + "/1.png", os.getcwd() + "/1.png")
-    copyfile(oldPath + "/" + foldername + "/1.wav", os.getcwd() + "/1.wav")
+    copyfile(oldPath + "/" + foldername + "/1.png", os.getcwd() + "/1.png")
+    copyfile(oldPath + "/" + foldername + "/StdDraw.class", os.getcwd() + "/StdDraw.class")
+    copyfile(oldPath + "/" + foldername + "/StdAudio.class", os.getcwd() + "/StdAudio.class")
 
     # complile, print to console
-    run_checkout("javac Animation.java")
+    run_checkout(["javac","Animation.java"])
     
     # run program, print to console
-    run_checkout("java Animation", ["800 600 ","0 0 10 45 ","../../1.png ","800 300 30 -180 ","../../1.wav ","3"])
-
+    try:
+        run_checkout(["java","Animation"], ["800 600 ","0 0 10 45 ","../../1.png ","800 300 30 -180 ","../../1.wav ","3"])
+    except e:
+        pass
     while True:
         try:
             print("Name: " + submission.path)
@@ -69,7 +73,10 @@ def grade_pset4_part1(submission):
                 return grade_pset4_part1(submission)
             # re-run without user input
             elif grade == "noinput":
-                run("java Animation")
+                try:
+                    run("java Animation")
+                except:
+                    pass
                 continue
             grade = float(grade)
             comment = raw_input("Comments: ")
@@ -90,21 +97,26 @@ def grade_pset4_part2(submission):
     os.chdir(submission.path)
     os.chdir("Submission attachment(s)")
     # complile
-    stdout, stderr = run("javac Cashier.java")
+    stdout, stderr = run(["javac","Cashier.java"])
     print(stdout)
     
     # run it
-    run_checkout("java Cashier", "1.28 1 6.0 5.00")
+    run_checkout(["java", "Cashier"], "1.28 1 6.0 5.00")
 
     while True:
         try:
             print("Name: " + submission.path)
             grade = raw_input("Grade: ")
-            grade = float(grade)
-            if abs(grade - (-1)) < 0.1:
-                # re-run current case, if grade is -1
+            if grade == "rerun":
+                # re-run current case
                 os.chdir(oldPath)
-                return grade_pset4(submission)
+                return grade_pset4_part1(submission)
+            elif grade == "noinput":
+                try:
+                    run(["java", "Cashier"])
+                except Exception, e:
+                    raise e
+            grade = float(grade)
             comment = raw_input("Comments: ")
         except Exception, e:
             print("Please enter a float grade")
